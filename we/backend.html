@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend</title>
+    <style>
+        body{
+            background-color: rgb(128, 99, 61);
+        }
+        form{
+            display: block;
+            width: 70%;
+            margin: auto;
+            /* background-color: white; */
+            justify-content: space-between;
+        }
+       
+        #nav{
+            width: 70%;
+            display: flex;
+            justify-content: space-around;
+            background-color: antiquewhite;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: 600;
+            margin: auto;
+            margin-bottom: 30px;
+            
+        }
+        a{
+            text-decoration: none;
+            color: black;
+            
+        }
+    </style>
+        
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <div><a href="backend.html"target ="_blank">Backend</a></div>
+        <div><a href="frontend.html"target = "_blank">Frontend</a></div>
+    </div>
+    <form>
+        <input id="name" type="text"placeholder = "Enter Name">
+        <input id="imz" type="text"placeholder = "Enter URL">
+        <input id="lUrl" type="text"placeholder = "Enter Logo URL">
+        <input id="role" type="text"placeholder = "Enter Role">
+        <input type="submit">
+
+
+    </form>
+    
+</body>
+</html>
+<script>
+
+var forms = document.querySelector("form");
+
+
+forms.addEventListener("submit",myfunction);
+
+
+
+// if(JSON.parse(localStorage.getItem("investorData")) == null)
+// {
+//     arr = [];
+// }
+// else{
+//    arr =  JSON.parse(localStorage.getItem("investorData"))
+// };
+function myfunction(){
+    event.preventDefault();
+var arr = JSON.parse(localStorage.getItem("investorData"))||[];
+    var obj = {
+        image:forms.imz.value,
+        name: forms.name.value,
+        role: forms.role.value,
+        logo: forms.lUrl.value
+
+    };
+    // console.log(obj);
+    arr.push(obj);
+   
+    // console.log(arr);
+    localStorage.setItem("investorData",JSON.stringify(arr));
+};
+
+
+</script>
